@@ -41,3 +41,4 @@ Object.seal();
 // .freeze hace que las propiedades no se puedan borrar ni editar
 // writable y configurable son false
 Object.freeze();
+
