@@ -1,7 +1,7 @@
 /*al hacer una copia de un objeto este apunta a la memoria del que copio, es decir se modifican simultaneamente
 -para evitar esto se hace lo siguiente siempre y cuando no hayan objetos
 */
-
+/*
 const obj1 ={
     a: "a",
     b: "b",
@@ -15,6 +15,7 @@ const obj1 ={
 };
 
 const obj2 ={};
+
 
 //esto funciona si no hay objetos dentro de mi objeto original
 for(prop in obj1){
@@ -39,6 +40,7 @@ for(prop in obj1){
 const stringifiedComplexObj = JSON.stringify(obj1);
 const obj5 = JSON.parse(stringifiedComplexObj);
 
+*/
 //este funciona porque no copia una posicion de memoria sino que pasa entre los tipos de memoria 
 // no se editan los objetos entre si en ninguna direccion 
 
@@ -101,3 +103,27 @@ function deepCopy(subject){
 
 
 };
+
+//definimos el molde base o clase padre para usarlo o "heredarlo" 
+//no usamos clases 
+
+const studentBase = {
+    name: undefined,
+    email: undefined,
+    age: undefined,
+    approvedCourses: undefined,
+    learningPAths: undefined,
+    socialMedia:{
+        tweeter: undefined,
+        instagram: undefined,
+        facebook: undefined,
+    },
+};
+
+//aca hacemos la "herencia" usando la RECURSIVIDAD
+
+const duvier = deepCopy(studentBase);
+Object.seal(duvier);
+//con la siguiente podemos verificar si el objeto esta protegido y no se puede borrar
+Object.isSealed(duvier);
+
