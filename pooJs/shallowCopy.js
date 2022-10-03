@@ -1,7 +1,7 @@
 /*al hacer una copia de un objeto este apunta a la memoria del que copio, es decir se modifican simultaneamente
 -para evitar esto se hace lo siguiente siempre y cuando no hayan objetos
 */
-/*
+/*quitar comentario
 const obj1 ={
     a: "a",
     b: "b",
@@ -24,23 +24,24 @@ for(prop in obj1){
 
 // este es un metodo que nos permite hacer lo mismo que con el for peoro mas simple
 
-//const obj3= Object.assign(pend, obj1);
+const obj3= Object.assign(pend, obj1);
 
 // con este metodo creamos un nuevo objeto a partir de otro y sus propiedades se mantienen en proto
 // entonces podemos tomar los valores y crear nuevas instancias independientes del original
 // pero nuevamente falla con los objetos dentro de objetos
 
-//const obj4 = Object.create({}, obj1);
+const obj4 = Object.create({}, obj1);
 
 //Ahora se usaran JSON.parse y JSON.stringify
 
-//JSON.stringify permite convertir objetos en string
-//JSON.parse convierte string en objetos
+JSON.stringify permite convertir objetos en string
+JSON.parse convierte string en objetos
 
 const stringifiedComplexObj = JSON.stringify(obj1);
 const obj5 = JSON.parse(stringifiedComplexObj);
 
-*/
+quitar comentario*/
+
 //este funciona porque no copia una posicion de memoria sino que pasa entre los tipos de memoria 
 // no se editan los objetos entre si en ninguna direccion 
 
