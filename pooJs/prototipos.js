@@ -36,17 +36,33 @@ function Student({
         facebook,
     };
 
-    if(!isArray(learningPaths)){
+    const private = {
+        "_learningPaths":[],
+    }
+
+    Object.defineProperty(this, "learningPaths",{
+        get(){
+            this._learningPaths
+        },
+        set(newLp){
+            if(newLp instanceof LearningPath) {
+                private._learningPaths.push(newLp);
+            }else{
+                console.warn("uno de las LPs no es unstancia de LearningPath");
+            }
+        },
+    })
+
+    /*if(!isArray(learningPaths)){
         console.error("learningPath is not array");
         return;
-    };
+    };*/
 
-    for(let learningPath of learningPaths){
-        if(learningPath instanceof LearningPath) {
-            this.learningPaths.push(learningPath);
-        }
-    };
+    for(learningPath in learningPaths){
+        this.learningPaths = learningPaths[learningPath]
+    }
 }
+
 
 const escuelaWeb = new LearningPath({name:"web", courses:[],});
 const escuelaData = new LearningPath({name: "data", courses:[]});
@@ -58,11 +74,6 @@ const hector = new Student({
     learningPaths:[
         escuelaWeb,
         escuelaData,
-    {
-        name: "web",
-        courses: [],
-    }
+   
 ]
 })
-
-Object.freeze(hector);
