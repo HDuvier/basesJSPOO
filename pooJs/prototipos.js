@@ -38,11 +38,11 @@ function Student({
 
     const private = {
         "_learningPaths":[],
-    }
+    };
 
     Object.defineProperty(this, "learningPaths",{
         get(){
-            this._learningPaths
+            return private._learningPaths;
         },
         set(newLp){
             if(newLp instanceof LearningPath) {
@@ -53,13 +53,8 @@ function Student({
         },
     })
 
-    /*if(!isArray(learningPaths)){
-        console.error("learningPath is not array");
-        return;
-    };*/
-
-    for(learningPath in learningPaths){
-        this.learningPaths = learningPaths[learningPath]
+    for(LPs in learningPaths){
+        this.learningPaths = learningPaths[LPs]
     }
 }
 
